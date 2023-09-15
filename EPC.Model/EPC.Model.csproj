@@ -7,8 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Enums\" />
-    <Folder Include="Models\PlantEngineeringModel\" />
+    <Folder Include="Enums\BuildingElementsEnums\" />
+    <Folder Include="Enums\BuildingInformationEnums\" />
+    <Folder Include="Enums\PlantEngineeringEnums\" />
+    <Folder Include="Enums\StoreysEnums\" />
   </ItemGroup>
 
   <ItemGroup>

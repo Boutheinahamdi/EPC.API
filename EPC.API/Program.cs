@@ -8,7 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddScoped<IGenericRepository<BuildingInformationDTO>,GenericRepository<BuildingInformationDTO>>();
 builder.Services.AddScoped<IGenericRepository<BuildingElementDTO>, GenericRepository<BuildingElementDTO>>();
-builder.Services.AddScoped<IGenericRepository<ImageDTO>, GenericRepository<ImageDTO>>();
+builder.Services.AddScoped<IGenericRepository<StoreysDTO>, GenericRepository<StoreysDTO>>();
+
+builder.Services.AddScoped<IImageRepository,ImageRepository>();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -17,12 +19,10 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+
 
 app.UseHttpsRedirection();
 

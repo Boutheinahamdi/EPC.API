@@ -2,9 +2,9 @@
 {
     public interface IGenericRepository <T> where T : class
     {
-        Task<IEnumerable<T>> GetBuildingInformationByTransactionID(string TransactionID);
-         Task AddBuildingInformation(T entity);
-        Task EditBuildingInformation(T entity);
-        Task<bool> DeleteBuildingInformation(string TransactionID);
+        Task<IEnumerable<T>> GetBuildingDataByTransactionID(string TransactionID);
+         Task AddBuildingData(T entity);
+        Task EditBuildingData(T entity);
+        Task<bool> DeleteBuildingData(string TransactionID);
     }
 }

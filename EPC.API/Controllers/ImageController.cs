@@ -8,23 +8,33 @@ namespace EPC.API.Controllers
     [ApiController]
     public class ImageController : Controller
     {
-        private readonly IGenericRepository<ImageDTO> _context;
+        private readonly IImageRepository _context;
 
-        public ImageController(IGenericRepository<ImageDTO> context)
+        public ImageController(IImageRepository context)
         {
             _context = context;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ImageDTO>>> GetImageByTransactionID(string TransactionID)
+        [Route("ByID")]
+
+        public async Task<ActionResult<ImageDTO>> GetImageByIDs(string TransactionID, string ImageID)
 
         {
-            var image = await _context.GetBuildingInformationByTransactionID(TransactionID);
+            var image = await _context.GetImageByIDs(TransactionID, ImageID);
             return Ok(image);
         }
         [HttpPost]
-        public async Task<ActionResult<ImageDTO>> AddBuildingInformation([FromForm] ImageDTO imagemodel)
+        public async Task<ActionResult<ImageDTO>> AddImage([FromForm] ImageDTO imagemodel)
         {
-            await _context.AddBuildingInformation(imagemodel);
+            await _context.AddImage(imagemodel);
+
+            return Ok();
+        }
+        [HttpDelete]
+
+        public async Task<ActionResult<ImageDTO>> DeleteImage(string TransactionID, string imageID)
+        {
+            await _context.DeleteImage(TransactionID, imageID);
 
             return Ok();
         }

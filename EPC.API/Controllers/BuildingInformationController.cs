@@ -16,34 +16,36 @@ namespace EPC.API.Controllers
         {
             _context = context;
         }
+
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BuildingInformationDTO>>> GetBuildingInformationByTransactionID(string TransactionID)
+        [Route("ByTransactionID")]
+
+
+        public async Task<ActionResult<BuildingInformationDTO>> GetBuildingInformationByTransactionID(string TransactionID)
 
         {
-            var building = await _context.GetBuildingInformationByTransactionID( TransactionID);
+            var building = await _context.GetBuildingDataByTransactionID( TransactionID);
             return Ok(building);
         }
         [HttpPost]
+        
+
         public async Task<ActionResult<BuildingInformationDTO>> AddBuildingInformation(BuildingInformationDTO buildingInformation)
         {
-            await _context.AddBuildingInformation(buildingInformation);
+            await _context.AddBuildingData(buildingInformation);
 
             return Ok();
         }
         [HttpPut]
+        
+
         public async Task<ActionResult<BuildingInformationDTO>> EditBuildingInformation(BuildingInformationDTO buildingInformation)
         {
-            await _context.EditBuildingInformation(buildingInformation);
+            await _context.EditBuildingData(buildingInformation);
 
             return Ok();
         }
-        [HttpDelete]
-        public async Task<ActionResult<BuildingInformationDTO>> DeleteBuildingInformation(string TransactionID)
-        {
-            await _context.DeleteBuildingInformation(TransactionID);
-
-            return Ok();
-        }
+       
 
     }
 }
